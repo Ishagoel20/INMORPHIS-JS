@@ -1,0 +1,55 @@
+<!--Write a JavaScript program to highlight the bold words of the following 
+paragraph, on mouse over a certain link.
+Sample link and text :
+[On mouse over here bold words of the following paragraph will be highlighted]
+We have just started this section for the users (beginner to intermediate) 
+who want to work with various JavaScript problems and write scripts online 
+to test their JavaScript skill-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Highlight Bold Words on Mouseover</title>
+<style>
+  body { margin: 30px; }
+  p { line-height: 1.5; }
+  .highlight { background-color: yellow; }
+</style>
+</head>
+<body>
+
+<p id="paragraph">
+  We have just started this section for the users <b>(beginner to intermediate)</b> who want to work with various JavaScript problems and write scripts online to test their JavaScript skill.
+</p>
+
+<p>
+  <a href="#" id="highlightLink">On mouse over here bold words of the following paragraph will be highlighted</a>
+</p>
+
+<script>
+document.getElementById('highlightLink').addEventListener('mouseover', function() {
+    highlightBoldWords();
+});
+
+function highlightBoldWords() {
+    var paragraph = document.getElementById('paragraph');
+    var boldElements = paragraph.getElementsByTagName('b');
+
+    for (var i = 0; i < boldElements.length; i++) {
+        boldElements[i].classList.add('highlight');
+    }
+}
+
+document.getElementById('highlightLink').addEventListener('mouseout', function() {
+    var paragraph = document.getElementById('paragraph');
+    var boldElements = paragraph.getElementsByTagName('b');
+
+    for (var i = 0; i < boldElements.length; i++) {
+        boldElements[i].classList.remove('highlight');
+    }
+});
+</script>
+
+</body>
+</html>

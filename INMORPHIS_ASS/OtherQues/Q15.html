@@ -1,0 +1,82 @@
+<!--Create a "Mad-libs" game using JavaScript.
+Create a blank page.
+Using a prompt box, prompt the user to supply his or her name.
+Then, using 5 additional prompt boxes, prompt the user to supply 5 words.
+Save each word in a separate variable.
+Then, using document.write() statements, use the information stored in
+variables to display a "Mad-libs" type of story, i.e. create a few paragraphs of
+information in story format.
+Also, prompt the user for a color (i.e. one of the 16 named colors or a hex
+value).
+Store this color in a variable.
+In the "mad libs" story, highlight, using the color supplied by the user, each
+of the words that you previously collected. Do this by surrounding the words
+with <div> tags and using an inline style.-->
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mad-libs Game</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 20px;
+      }
+      .highlight {
+        display: inline-block;
+        padding: 3px;
+        border-radius: 3px;
+      }
+    </style>
+    </head>
+    <body>
+      <script>
+        // Prompt user for name
+var userName = prompt("Please enter your name:");
+
+// Prompt user for 5 words
+var word1 = prompt("Enter a noun:");
+var word2 = prompt("Enter an adjective:");
+var word3 = prompt("Enter another noun:");
+var word4 = prompt("Enter a verb:");
+var word5 = prompt("Enter a place:");
+
+// Prompt user for a color
+var userColor = prompt("Enter a color name (e.g., red, blue, green) or a hex value (#xxxxxx):");
+
+// Create the Mad-libs story
+var story = `
+  Once upon a time, ${userName} found a magical ${word1} in the middle of a ${word2} ${word5}.
+  Astonished by its beauty, ${userName} decided to ${word4} the ${word1} and suddenly, it transformed into a ${word3}.
+  Excitedly, ${userName} took the ${word3} and traveled to ${word5}, where they met a friendly ${word2} ${word1}.
+  Together, they embarked on an adventure to discover the secrets of the enchanted ${word3}.
+`;
+
+// Display the story with highlighted words
+document.write("<h2>Mad-libs Story</h2>");
+document.write('<div style="text-align: left; margin: 20px;">');
+
+// Function to wrap words with highlighting divs
+function highlightWord(word) {
+  document.write(`<div class="highlight" style="background-color: ${userColor};">${word}</div>`);
+}
+
+// Split the story into words and highlight user input words
+var words = story.split(" ");
+words.forEach(function(word) {
+  if (word === userName || word === word1 || word === word2 || word === word3 || word === word4 || word === word5) {
+    highlightWord(word);
+  } else {
+    document.write(word + " ");
+  }
+});
+
+document.write('</div>');
+
+      </script>
+    </body>
+    </html>
+    

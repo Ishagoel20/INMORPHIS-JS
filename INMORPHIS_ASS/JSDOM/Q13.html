@@ -1,0 +1,45 @@
+<!--Write a JavaScript program to get the width and height of the window (any 
+time the window is resized)-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Get Window Width and Height on Resize</title>
+<style>
+  body { margin: 30px; }
+  p { font-size: 18px; }
+</style>
+</head>
+<body>
+
+<p>Window width: <span id="width"></span></p>
+<p>Window height: <span id="height"></span></p>
+
+<script>
+// Function to update width and height
+function updateSize() {
+    var widthElement = document.getElementById('width');
+    var heightElement = document.getElementById('height');
+
+    // Get the current window width and height
+    var width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    var height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+
+    // Update the elements with the new width and height
+    widthElement.textContent = width + 'px';
+    heightElement.textContent = height + 'px';
+}
+
+// Initial call to set initial width and height
+updateSize();
+
+// Event listener for window resize
+window.addEventListener('resize', function() {
+    // Call the function to update width and height on resize
+    updateSize();
+});
+</script>
+
+</body>
+</html>

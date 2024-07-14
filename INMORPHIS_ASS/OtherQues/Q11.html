@@ -1,0 +1,29 @@
+<!--Create a basic page in html. Then, display the following items in the 
+page using only one or more document.write() statements:
+1. Information about the web browser that the user is viewing this page 
+with.
+2. The height and width of the user's monitor, i.e. the resolution
+3. The date that the page was created or last modified.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Display Browser Info, Resolution, and Last Modified Date</title>
+</head>
+<body>
+    <script>
+        document.write("<h2>Browser Information:</h2>");
+        document.write("<p><strong>Browser Name:</strong> " + navigator.appName + "</p>");
+        document.write("<p><strong>Browser Version:</strong> " + navigator.appVersion + "</p>");
+        document.write("<p><strong>User Agent:</strong> " + navigator.userAgent + "</p>");
+
+        document.write("<h2>Monitor Resolution:</h2>");
+        document.write("<p><strong>Screen Width:</strong> " + screen.width + " pixels</p>");
+        document.write("<p><strong>Screen Height:</strong> " + screen.height + " pixels</p>");
+
+        document.write("<h2>Page Information:</h2>");
+        document.write("<p><strong>Last Modified:</strong> " + document.lastModified + "</p>");
+    </script>
+</body>
+</html>

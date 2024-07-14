@@ -1,0 +1,27 @@
+<!--Write a JavaScript program to draw the following right-angled triangle-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Right-angled Triangle</title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // Draw the right-angled triangle
+    ctx.beginPath();
+    ctx.moveTo(50, 50);  // Vertex A
+    ctx.lineTo(50, 100); // Vertex B
+    ctx.lineTo(100, 100); // Vertex C
+    ctx.closePath();
+
+    // Fill the triangle with black color
+    ctx.fillStyle = "black";
+    ctx.fill();
+</script>
+</body>
+</html>

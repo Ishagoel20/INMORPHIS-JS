@@ -1,0 +1,34 @@
+//Write a JavaScript program to add items in an blank array and display the items.
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add and Display Items</title>
+    <script>
+        let items = [];
+
+        function addItem() {
+            let newItem = document.getElementById("inputItem").value;
+            if (newItem) {
+                items.push(newItem);
+                document.getElementById("inputItem").value = ""; // Clear the input field
+            }
+        }
+
+        function displayItems() {
+            let displayArea = document.getElementById("displayArea");
+            displayArea.innerHTML = ""; // Clear previous display
+            for (let i = 0; i < items.length; i++) {
+                displayArea.innerHTML += Element ${i} = ${items[i]}<br>;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Add and Display Items</h2>
+    <input type="text" id="inputItem" placeholder="Enter an item">
+    <button onclick="addItem()">Add</button>
+    <button onclick="displayItems()">Display</button>
+    <div id="displayArea"></div>
+</body>
+</html>

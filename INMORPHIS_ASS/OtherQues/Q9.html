@@ -1,0 +1,131 @@
+<!--Use previous question images and add two image button (back and forward). 
+Back button allows the user to move backward through the slide show one 
+slide at a time. When the user reaches the end (or beginning when clicking on 
+the back button) of the slide show, the slide show should not wrap around to 
+the beginning (or end) and forward button should show next image. When at 
+the beginning of the slide show, only the forward image button should be 
+visible. Conversely, when at the end, only the back image button should be 
+visible-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Slideshow with Back and Forward Buttons</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .slideshow-container {
+        position: relative;
+        max-width: 600px;
+        margin: auto;
+    }
+    .mySlides {
+        display: none;
+        width: 100%;
+        height: auto;
+    }
+    .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none; /* Initially hide both buttons */
+    }
+    .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+    }
+    .prev:hover, .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    .text {
+        color: #f2f2f2;
+        font-size: 15px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+
+<div class="slideshow-container">
+    <div class="mySlides">
+        <img src="image1.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="image2.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="image3.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="image4.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides">
+        <img src="image5.jpg" style="width:100%">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094; Previous</a>
+    <a class="next" onclick="plusSlides(1)">Next &#10095;</a>
+</div>
+
+<script>
+var slideIndex = 1;
+showSlides(slideIndex);
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var prevButton = document.getElementsByClassName("prev")[0];
+  var nextButton = document.getElementsByClassName("next")[0];
+
+  // Hide or show buttons based on slideIndex
+  if (n === 1) {
+    prevButton.style.display = "none";
+    nextButton.style.display = "block";
+  } else if (n === slides.length) {
+    prevButton.style.display = "block";
+    nextButton.style.display = "none";
+  } else {
+    prevButton.style.display = "block";
+    nextButton.style.display = "block";
+  }
+
+  // Ensure slideIndex stays within bounds
+  if (n > slides.length) {slideIndex = slides.length}
+  if (n < 1) {slideIndex = 1}
+
+  // Hide all slides and display the current slide
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+  }
+  slides[slideIndex-1].style.display = "block";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!-- Create an HTML page that includes 2 paragraphs of text. Add JavaScript to 
+insert a new paragraph in between the other 2. Add JavaScript to use an event 
+to change the style of the new paragraph using either the style property or the 
+className property. Add JavaScript to use an event to change the style of the 
+new paragraph back to the original.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dynamic Paragraph Insertion and Style Toggle</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .container {
+        margin-top: 20px;
+    }
+    p {
+        padding: 10px;
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        margin-bottom: 10px;
+    }
+    .highlighted {
+        background-color: lightblue;
+        font-weight: bold;
+    }
+</style>
+</head>
+<body>
+    <h2>Paragraphs with Dynamic Insertion and Style Toggle</h2>
+    <div class="container">
+        <p>This is the first paragraph.</p>
+        <p>This is the second paragraph.</p>
+    </div>
+    
+    <script>
+        // Function to insert a new paragraph between existing paragraphs
+        function insertParagraph() {
+            var container = document.querySelector('.container');
+            var newParagraph = document.createElement('p');
+            newParagraph.textContent = 'This is the newly inserted paragraph.';
+            
+            // Insert new paragraph between the existing ones
+            container.insertBefore(newParagraph, container.children[1]);
+            
+            // Add event listener to highlight the new paragraph on click
+            newParagraph.addEventListener('click', highlightParagraph);
+            
+            // Add event listener to revert style on double click
+            newParagraph.addEventListener('dblclick', revertStyle);
+        }
+        
+        // Function to highlight the paragraph on click
+        function highlightParagraph(event) {
+            var paragraph = event.target;
+            paragraph.classList.add('highlighted');
+        }
+        
+        // Function to revert style on double click
+        function revertStyle(event) {
+            var paragraph = event.target;
+            paragraph.classList.remove('highlighted');
+        }
+    </script>
+    
+    <!-- Button to trigger the insertion of a new paragraph -->
+    <button onclick="insertParagraph()">Insert New Paragraph</button>
+</body>
+</html>

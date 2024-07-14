@@ -1,0 +1,50 @@
+<!--Reconfigure the previous question to execute using a function. Specifically, 
+when the user clicks on the button, the onClick event handler calls a function.
+The function then executes the statement that changes the background color 
+to blue.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Change Background Color on Click</title>
+<style>
+    body {
+        text-align: center;
+        margin-top: 50px;
+    }
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+    }
+    .container {
+        margin-top: 20px;
+    }
+    .box {
+        width: 300px;
+        height: 200px;
+        background-color: lightgray;
+        border: 2px solid black;
+        margin: 0 auto;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <h2>Click the Button to Change Background Color</h2>
+    <div class="container">
+        <div class="box" id="myBox">
+            <p>This is a box.</p>
+        </div>
+        <button onclick="changeBackgroundColor()">Change Color</button>
+    </div>
+    
+    <script>
+        function changeBackgroundColor() {
+            var box = document.getElementById('myBox');
+            box.style.backgroundColor = 'blue';
+        }
+    </script>
+</body>
+</html>

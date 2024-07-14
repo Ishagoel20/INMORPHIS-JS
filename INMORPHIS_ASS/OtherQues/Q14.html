@@ -1,0 +1,107 @@
+<!--Create a basic page in html that displays text and an image. Track how
+many times a user has visited your page by storing this information in
+a cookie. Display this information to the user, e.g. You have visited x number
+of times! The current visit should be included in this number. Display the
+date and time of the user's last visit, e.g. "You lasted visted on..." If this is the
+user's first visit, display e.g. "You have never visited before" instead.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visitor Tracker</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+  <h2>Welcome to My Page!</h2>
+  
+  <!-- Display visit information -->
+  <div id="visitInfo">
+    <!-- JavaScript will populate this -->
+  </div>
+  
+  <!-- Image example -->
+  <img src="example.jpg" alt="Example Image">
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var visitCount = getVisitCount();
+      var lastVisit = getLastVisitDateTime();
+      var visitInfoDiv = document.getElementById('visitInfo');
+      
+      // Display visit information
+      var infoText;
+      if (visitCount === 1) {
+        infoText = "You have never visited before.";
+      } else {
+        infoText = "You have visited " + visitCount + " times!";
+      }
+      
+      if (lastVisit) {
+        infoText += " Your last visit was on " + lastVisit + ".";
+      }
+      
+      visitInfoDiv.textContent = infoText;
+      
+      // Update visit count and date
+      updateVisitInfo();
+    });
+    
+    function getVisitCount() {
+      var visitCount = parseInt(getCookie("visitCount"));
+      if (isNaN(visitCount)) {
+        return 0;
+      }
+      return visitCount;
+    }
+    
+    function getLastVisitDateTime() {
+      return getCookie("lastVisit");
+    }
+    
+    function updateVisitInfo() {
+      var visitCount = getVisitCount() + 1;
+      var now = new Date();
+      var lastVisitString = "Last visited on " + now.toLocaleString();
+      
+      // Update cookies
+      setCookie("visitCount", visitCount, 365);
+      setCookie("lastVisit", lastVisitString, 365);
+    }
+    
+    // Cookie handling functions
+    function setCookie(name, value, days) {
+      var expires = "";
+      if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "") + expires + "; path=/";
+    }
+    
+    function getCookie(name) {
+      var nameEQ = name + "=";
+      var ca = document.cookie.split(';');
+      for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+      }
+      return null;
+    }
+  </script>
+</body>
+</html>

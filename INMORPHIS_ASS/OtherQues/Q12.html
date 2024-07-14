@@ -1,0 +1,85 @@
+<!--Create a basic page in html that displays 2 images. When the user 
+places a cursor over any image, replace the image with a different image.
+When the user removes the cursor from the image and return it to its 
+original state-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Hover Effect</title>
+<style>
+    body {
+        text-align: center;
+        margin-top: 50px;
+    }
+    .image-container {
+        display: inline-block;
+        margin: 20px;
+        position: relative;
+    }
+    .image-container img {
+        width: 300px;
+        height: auto;
+        cursor: pointer;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        text-align: center;
+        padding-top: 50px; /* Adjust as needed */
+    }
+    .overlay p {
+        margin: 0;
+    }
+</style>
+</head>
+<body>
+    <div class="image-container" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+        <img id="image1" src="image1.jpg">
+        <div class="overlay">
+            <p>Hovered Image 1</p>
+        </div>
+    </div>
+    <div class="image-container" onmouseover="changeImage(this)" onmouseout="restoreImage(this)">
+        <img id="image2" src="image2.jpg">
+        <div class="overlay">
+            <p>Hovered Image 2</p>
+        </div>
+    </div>
+
+    <script>
+        function changeImage(container) {
+            var img = container.querySelector('img');
+            var overlay = container.querySelector('.overlay');
+            var originalSrc = img.src;
+
+            // Example logic to change the image source
+            if (originalSrc.includes('image1.jpg')) {
+                img.src = 'image1_hover.jpg';  // Change to a different image on hover
+                overlay.style.display = 'block'; // Show overlay on hover
+            } else if (originalSrc.includes('image2.jpg')) {
+                img.src = 'image2_hover.jpg';  // Change to a different image on hover
+                overlay.style.display = 'block'; // Show overlay on hover
+            }
+        }
+
+        function restoreImage(container) {
+            var img = container.querySelector('img');
+            var overlay = container.querySelector('.overlay');
+
+            // Example logic to restore the original image source
+            if (img.src.includes('_hover.jpg')) {
+                img.src = img.src.replace('_hover.jpg', '.jpg');  // Restore original image
+                overlay.style.display = 'none'; // Hide overlay on mouseout
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!--Write a JavaScript program to draw a circle-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Draw a Circle</title>
+</head>
+<body>
+    <h2>Draw a Circle</h2>
+    <canvas id="circleCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.getElementById('circleCanvas');
+            var context = canvas.getContext('2d');
+
+            context.beginPath();
+            context.arc(100, 100, 80, 0, 2 * Math.PI);
+            context.strokeStyle = 'red';
+            context.lineWidth = 2;
+            context.stroke();
+        }
+    </script>
+</body>
+</html>

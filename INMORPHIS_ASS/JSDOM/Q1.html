@@ -1,0 +1,52 @@
+<!--Here is a sample html file with a submit button. Now modify the style of the 
+paragraph text through javascript code.
+Sample HTML file :
+1. <!DOCTYPE html> 
+2. <html><br><head> 
+3. <meta charset=utf-8 /> 
+4. <title>JS DOM paragraph style</title> 
+5. </head> 
+6. <body> 
+7. <p id ='text'>JavaScript Exercises - w3resource</p> 
+8. <div> 
+9. <button id="jsstyle" 
+10.onclick="js_style()">Style</button> 
+11.</div> 
+12.</body> 
+13.</html>-->
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8" /> 
+<title>JS DOM paragraph style</title> 
+<style>
+    /* Optional: Add some initial styles */
+    #text {
+        font-size: 16px;
+        color: #333;
+        font-family: Arial, sans-serif;
+    }
+</style>
+</head> 
+<body> 
+<p id="text">JavaScript Exercises - w3resource</p> 
+<div> 
+    <button id="jsstyle" onclick="js_style()">Style</button> 
+</div> 
+
+<script>
+function js_style() {
+    // Get the paragraph element by id
+    var paragraph = document.getElementById('text');
+    
+    // Modify its style properties
+    paragraph.style.fontSize = '20px';    // Change font size to 20px
+    paragraph.style.color = 'red';        // Change text color to red
+    paragraph.style.fontFamily = 'Verdana, sans-serif';  // Change font family
+    paragraph.style.fontWeight = 'bold';  // Make text bold
+}
+</script>
+
+</body> 
+</html>

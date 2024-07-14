@@ -1,0 +1,39 @@
+<!--Create a basic page in html that consists of one image. Using the onClick 
+event handler, when the user clicks on the image, change it to a unique image-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Image Change on Click</title>
+<style>
+    body {
+        text-align: center;
+        margin-top: 50px;
+    }
+    img {
+        width: 300px;
+        height: auto;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <h2>Click the Image to Change It</h2>
+    <img id="myImage" src="image1.jpg" onclick="changeImage()">
+    
+    <script>
+        function changeImage() {
+            var image = document.getElementById('myImage');
+            var currentSrc = image.src;
+            
+            // Example logic to change the image source
+            if (currentSrc.includes('image1.jpg')) {
+                image.src = 'image2.jpg';  // Change to a unique image
+            } else {
+                image.src = 'image1.jpg';  // Change back to the original image
+            }
+        }
+    </script>
+</body>
+</html>

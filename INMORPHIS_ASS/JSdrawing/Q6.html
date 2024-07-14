@@ -1,0 +1,36 @@
+<!--Write a JavaScript program to draw the following diagram [diagonal, white to 
+black circles].-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Gradient Circles</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="400" height="400" style="border:1px solid #000000;"></canvas>
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+
+        const numCircles = 6;
+        const radius = 20;
+        const startX = 50;
+        const startY = 50;
+        const offset = 50;
+
+        for (let i = 0; i < numCircles; i++) {
+            // Calculate color based on the index
+            let grayValue = Math.floor((255 / (numCircles - 1)) * i);
+            let color = rgb(${grayValue}, ${grayValue}, ${grayValue});
+
+            // Draw the circle
+            ctx.beginPath();
+            ctx.arc(startX + i * offset, startY + i * offset, radius, 0, 2 * Math.PI, false);
+            ctx.fillStyle = color;
+            ctx.fill();
+            ctx.stroke();
+        }
+    </script>
+</body>
+</html>

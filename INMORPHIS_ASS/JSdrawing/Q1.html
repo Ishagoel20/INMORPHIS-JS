@@ -1,0 +1,31 @@
+<!--Write a JavaScript program to draw the following rectangular shape.-->
+
+!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Drawing</title>
+</head>
+<body>
+    <h2>Draw a Rectangular Shape</h2>
+    <canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var canvas = document.getElementById('myCanvas');
+            var context = canvas.getContext('2d');
+
+            // Outer rectangle
+            context.fillStyle = 'black';
+            context.fillRect(10, 10, 180, 180);
+
+            // Inner rectangle
+            context.clearRect(40, 40, 120, 120);
+            context.strokeStyle = 'black';
+            context.lineWidth = 2;
+            context.strokeRect(40, 40, 120, 120);
+        }
+    </script>
+</body>
+</html>
+
+

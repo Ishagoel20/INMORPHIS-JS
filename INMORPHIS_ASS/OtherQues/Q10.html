@@ -1,0 +1,81 @@
+<!--Create a basic page. Using the setTimeout() method, create 
+an animation on the page. Allow the user to stop the animation by placing 
+the cursor on any marble. Allow the user to restart the animation 
+by removing the cursor from that marble.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animation with Pause/Restart</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        background-color: #f0f0f0;
+    }
+    .marble {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #3498db;
+        margin: 0 10px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="marble"></div>
+    <div class="marble"></div>
+    <div class="marble"></div>
+</div>
+
+<script>
+// Function to create the animation
+function animateMarbles() {
+    const marbles = document.querySelectorAll('.marble');
+    let angle = 0;
+
+    function moveMarbles() {
+        angle += 5;
+        marbles.forEach((marble, index) => {
+            const rotation = angle + (index * 120);
+            const x = Math.cos(rotation * Math.PI / 180) * 100;
+            const y = Math.sin(rotation * Math.PI / 180) * 100;
+            marble.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        setTimeout(moveMarbles, 50);
+    }
+
+    moveMarbles();
+}
+
+// Initialize animation when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    animateMarbles();
+});
+
+// Add event listeners to pause and restart animation on hover
+const marbles = document.querySelectorAll('.marble');
+marbles.forEach(marble => {
+    marble.addEventListener('mouseenter', () => {
+        clearTimeout(timeoutID);
+    });
+    marble.addEventListener('mouseleave', () => {
+        animateMarbles();
+    });
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!--Write a JavaScript function to add rows to a table.
+Sample HTML file :
+view plaincopy to clipboardprint?
+1. <!DOCTYPE html> 
+2. <html><head><br><meta charset=utf-8 /> 
+3. <title>Insert row in a table - w3resource</title> 
+4. </head><body> 
+5. <table id="sampleTable" border="1"> 
+6. <tr><td>Row1 cell1</td> 
+7. <td>Row1 cell2</td></tr> 
+8. <tr><td>Row2 cell1</td> 
+9. <td>Row2 cell2</td></tr> 
+10.</table><br> 
+11.<input type="button" onclick="insert_Row()" value="Insert row"> 
+12.</body></html>-->
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8" /> 
+<title>Insert row in a table - w3resource</title> 
+</head>
+<body> 
+
+<table id="sampleTable" border="1"> 
+    <tr><td>Row1 cell1</td><td>Row1 cell2</td></tr> 
+    <tr><td>Row2 cell1</td><td>Row2 cell2</td></tr> 
+</table><br> 
+
+<input type="button" onclick="insert_Row()" value="Insert row"> 
+
+<script>
+function insert_Row() {
+    // Find the table body (tbody) element
+    var table = document.getElementById('sampleTable').getElementsByTagName('tbody')[0];
+    
+    // Create a new row (tr) element
+    var newRow = table.insertRow();
+    
+    // Insert new cells (td) into the new row
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    
+    // Add text to the cells
+    cell1.innerHTML = 'New Row cell1';
+    cell2.innerHTML = 'New Row cell2';
+}
+</script>
+
+</body> 
+</html>

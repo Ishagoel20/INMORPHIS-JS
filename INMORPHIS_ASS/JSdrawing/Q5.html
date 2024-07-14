@@ -1,0 +1,35 @@
+<!--5. Write a JavaScript program to draw the following diagram [use moveto() 
+function].-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Star Shape</title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // Draw the star shape
+    ctx.beginPath();
+    ctx.moveTo(100, 10);  // Starting point
+    ctx.lineTo(120, 90);
+    ctx.lineTo(190, 90);
+    ctx.lineTo(140, 130);
+    ctx.lineTo(160, 190);
+    ctx.lineTo(100, 150);
+    ctx.lineTo(40, 190);
+    ctx.lineTo(60, 130);
+    ctx.lineTo(10, 90);
+    ctx.lineTo(80, 90);
+    ctx.closePath();
+
+    // Stroke the star shape
+    ctx.strokeStyle = "black";
+    ctx.stroke();
+</script>
+</body>
+</html>

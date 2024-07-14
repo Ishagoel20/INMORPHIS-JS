@@ -1,0 +1,39 @@
+//Write a JavaScript program to get the website URL (loading page).
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Website URL</title>
+<script>
+  // Function to get and display the current URL
+  function displayURL() {
+    var currentURL = window.location.href;
+    document.getElementById('url').textContent = "Current URL: " + currentURL;
+  }
+</script>
+</head>
+<body onload="displayURL()">
+  <h2>Current Website URL</h2>
+  <p id="url">Loading...</p>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

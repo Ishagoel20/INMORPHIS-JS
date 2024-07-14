@@ -1,0 +1,72 @@
+<!--Write a JavaScript function that accept row, column, (to identify a particular 
+cell) and a string to update the content of that cell.
+Sample HTML file :
+view plaincopy to clipboardprint?
+1. <!DOCTYPE html> 
+2. <html><head><br><meta charset=utf-8 /> 
+3. <title>Change the content of a cell</title> 
+4. </head><body> 
+5. <table id="myTable" border="1"> 
+6. <tr><td>Row1 cell1</td> 
+7. <td>Row1 cell2</td></tr> 
+8. <tr><td>Row2 cell1</td> 
+9. <td>Row2 cell2</td></tr> 
+10.<tr><td>Row3 cell1</td> 
+11.<td>Row3 cell2</td></tr> 
+12.</table><form> 
+13.<input type="button" onclick="changeContent()" value="Change content"> 
+14.</form></body></html>-->
+
+<!DOCTYPE html> 
+<html>
+<head>
+<meta charset="utf-8" /> 
+<title>Change the content of a cell</title> 
+</head>
+<body> 
+
+<table id="myTable" border="1"> 
+    <tr><td>Row1 cell1</td><td>Row1 cell2</td></tr> 
+    <tr><td>Row2 cell1</td><td>Row2 cell2</td></tr> 
+    <tr><td>Row3 cell1</td><td>Row3 cell2</td></tr> 
+</table>
+
+<form>
+    <label>Row:</label>
+    <input type="number" id="rowInput" value="1">
+    <label>Column:</label>
+    <input type="number" id="columnInput" value="1">
+    <input type="text" id="contentInput" placeholder="Enter new content">
+    <input type="button" onclick="changeContent()" value="Change content">
+</form>
+
+<script>
+function changeContent() {
+    // Get the inputs
+    var rowIndex = document.getElementById('rowInput').value;
+    var columnIndex = document.getElementById('columnInput').value;
+    var newContent = document.getElementById('contentInput').value;
+    
+    // Get the table and validate row and column indices
+    var table = document.getElementById('myTable');
+    var rows = table.getElementsByTagName('tr');
+    
+    // Check if the row index is valid
+    if (rowIndex >= 1 && rowIndex <= rows.length) {
+        var cells = rows[rowIndex - 1].getElementsByTagName('td');
+        
+        // Check if the column index is valid
+        if (columnIndex >= 1 && columnIndex <= cells.length) {
+            // Update the content of the specified cell
+            cells[columnIndex - 1].textContent = newContent;
+        } else {
+            alert('Invalid column index. Please enter a number between 1 and ' + cells.length);
+        }
+    } else {
+        alert('Invalid row index. Please enter a number between 1 and ' + rows.length);
+    }
+}
+</script>
+
+</body> 
+</html>

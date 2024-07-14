@@ -1,0 +1,61 @@
+<!--Write a JavaScript program to display a random image (clicking on a button) 
+from the following list.
+Sample Image information :
+"http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", width: 
+"240", height: "160"
+"http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", width: "320",
+height: "195"
+"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg", width: "500", 
+height: "343"-->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Random Image Display</title>
+<style>
+body { text-align: center; }
+img { margin-top: 20px; }
+</style>
+</head>
+<body>
+
+<h2>Random Image Display</h2>
+
+<button onclick="displayRandomImage()">Display Random Image</button>
+
+<div id="imageContainer">
+    <!-- Image will be displayed here -->
+</div>
+
+<script>
+function displayRandomImage() {
+    // Array of image information objects
+    var images = [
+        { url: "http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg", width: "240", height: "160" },
+        { url: "http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg", width: "320", height: "195" },
+        { url: "http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg", width: "500", height: "343" }
+    ];
+
+    // Get a random index to select a random image from the array
+    var randomIndex = Math.floor(Math.random() * images.length);
+    var randomImage = images[randomIndex];
+
+    // Create an <img> element
+    var imgElement = document.createElement('img');
+    imgElement.src = randomImage.url;
+    imgElement.width = randomImage.width;
+    imgElement.height = randomImage.height;
+    imgElement.alt = 'Random Image';
+
+    // Get the image container div and clear any previous image
+    var imageContainer = document.getElementById('imageContainer');
+    imageContainer.innerHTML = '';
+
+    // Append the new image to the container
+    imageContainer.appendChild(imgElement);
+}
+</script>
+
+</body>
+</html>

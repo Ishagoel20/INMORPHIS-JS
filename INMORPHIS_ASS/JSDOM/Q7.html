@@ -1,0 +1,67 @@
+<!--Write a JavaScript function that creates a table, accept row, column numbers 
+from the user, and input row-column number as content (e.g. Row-0 Column-0) 
+of a cell.
+Sample HTML file :
+view plaincopy to clipboardprint?
+1. <!DOCTYPE html> 
+2. <html> 
+3. <head> 
+4. <meta charset=utf-8 /> 
+5. <title>Change the content of a cell</title> 
+6. <style type="text/css"> 
+7. body {margin: 30px;} 
+8. </style> 
+9. </head><body> 
+10.<table id="myTable" border="1"> 
+11.</table><form> 
+12.<input type="button" onclick="createTable()" value="Create the table"> 
+13.</form></body></html>-->
+
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta charset="utf-8" /> 
+<title>Create a Table Dynamically</title> 
+<style type="text/css"> 
+body { margin: 30px; }
+</style> 
+</head>
+<body> 
+
+<table id="myTable" border="1"> 
+<!-- Table will be dynamically created here -->
+</table>
+
+<form>
+    <label>Rows:</label>
+    <input type="number" id="rowsInput" value="3">
+    <label>Columns:</label>
+    <input type="number" id="colsInput" value="3">
+    <input type="button" onclick="createTable()" value="Create the table">
+</form>
+
+<script>
+function createTable() {
+    // Get the input values
+    var rows = document.getElementById('rowsInput').value;
+    var cols = document.getElementById('colsInput').value;
+    
+    // Get the table element by id
+    var table = document.getElementById('myTable');
+    
+    // Clear existing table (if any)
+    table.innerHTML = '';
+    
+    // Create rows and cells
+    for (var i = 0; i < rows; i++) {
+        var row = table.insertRow();
+        for (var j = 0; j < cols; j++) {
+            var cell = row.insertCell();
+            cell.textContent = 'Row-' + i + ' Column-' + j;
+        }
+    }
+}
+</script>
+
+</body>
+</html>

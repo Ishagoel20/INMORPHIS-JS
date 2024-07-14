@@ -1,0 +1,25 @@
+<!--Write a JavaScript program to draw two intersecting rectangles, one of which 
+has alpha transparency-->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intersecting Rectangles</title>
+</head>
+<body>
+<canvas id="myCanvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext("2d");
+
+    // Draw the first rectangle (red)
+    ctx.fillStyle = "red";
+    ctx.fillRect(30, 30, 50, 50);
+
+    // Draw the second rectangle (blue) with alpha transparency
+    ctx.fillStyle = "rgba(0, 0, 255, 0.5)";
+    ctx.fillRect(50, 50, 50, 50);
+</script>
+</body>
+</html>
